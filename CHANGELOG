@@ -32,7 +32,7 @@
   * Added info when no locale is found on snowball filter [@nerde] [#10]
 0.3.0:
  * Added custom words list to snowball filter [@sbeckeriv]
- * Fixed problem about initialization: https://github.com/brenes/stopwords-filter/issues/3 [@zackxu1]
+ * Fixed problem about initialization: https://github.com/mlengse/stopwords-filter/issues/3 [@zackxu1]
 0.2.0:
  * Added stopword? method [@s2gatev]
  * Added Sieve class [@s2gatev]
