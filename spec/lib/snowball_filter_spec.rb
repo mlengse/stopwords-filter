@@ -25,6 +25,30 @@ describe Stopwords::Snowball::Filter do
 
   end
 
+  context "when pointed to Indonesian locale" do
+
+    let (:filter) { Stopwords::Snowball::Filter.new "id" }
+
+    subject { filter }
+
+    it("should have appropriate stopwords") { expect(subject.stopwords).to include("yang", "dan", "di", "ini", "itu") }
+
+    it("should filter Indonesian stopwords") { expect(filter.filter("buku ini di meja".split)).to eq(["buku", "meja"]) }
+
+    it("should handle common Indonesian particles") { expect(filter.filter("saya pergi ke pasar".split)).to eq(["saya", "pergi", "pasar"]) }
+
+  end
+
+  context "when pointed to Indonesian locale with country code" do
+
+    let (:filter) { Stopwords::Snowball::Filter.new "id-ID" }
+
+    subject { filter }
+
+    it("should strip country code and load correct locale") { expect(filter.filter("buku ini di meja".split)).to eq(["buku", "meja"]) }
+
+  end
+
   context "when locale is not found" do
 
     let (:filter) { Stopwords::Snowball::Filter.new "no-real" }

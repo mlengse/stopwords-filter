@@ -13,7 +13,7 @@ module Stopwords
     end
 
     def stopword? word
-      stopwords.include?(word) || stopwords.include?(word.downcase)
+      stopwords.include?(word.downcase)
     end
 
   end
