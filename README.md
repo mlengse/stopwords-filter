@@ -1,8 +1,6 @@
 Stopwords Filter
 ================
 
-[![Build Status](https://travis-ci.org/mlengse/stopwords-filter.svg?branch=master)](https://travis-ci.org/mlengse/stopwords-filter)
-
 This project is a very simple and naive implementation of a stopwords filter that remove a list of banned words (stopwords) from a sentence.
 
 Quick guide
@@ -135,13 +133,13 @@ Currently we have support for:
   * Breton (br)
   * Catalán (ca)
   * Chinese (zh)
-  * Czesch (cs)
+  * Czech (cs)
   * Danish (da)
   * German (de)
   * Greek (el)
   * English (en)
   * Spanish (es)
-  * Finnish (fi): Due to an error it can also be used referring to the `fn` locale
+  * Finnish (fi): `fn` is also accepted as a redirect to `fi`
   * French (fr)
   * Hebrew (he)
   * Hungarian (hu)
@@ -165,7 +163,7 @@ Anything else?
 
 In a future version I would like to include a chaining filter where you include a series of operations and they are executed in a lineal order, just like the [Pipes and Filters design pattern][wikipedia_pipes_filters]
 
-Ackonowledgments
+Acknowledgments
 ----------------
 
 Thanks to @s2gatev who added the `stopword?` method and the sieve class to this gem

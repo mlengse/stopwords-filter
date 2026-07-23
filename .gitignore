@@ -1,1 +1,8 @@
 .idea/
+*.gem
+Gemfile.lock
+pkg/
+.bundle/
+.DS_Store
+coverage/
+tmp/

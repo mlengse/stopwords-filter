@@ -7,6 +7,7 @@ Gem::Specification.new do |s|
   s.name = %q{stopwords-filter}
   s.version = "0.7.0"
 
+  s.required_ruby_version = ">= 2.4"
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["mLengse (medotsys@gmail.com)"]
   s.date = %q{2021-12-19}
@@ -33,6 +34,7 @@ Gem::Specification.new do |s|
     "lib/stopwords/snowball/wordsieve.rb",
     "spec/lib/filter_spec.rb",
     "spec/lib/snowball_filter_spec.rb",
+    "spec/lib/wordsieve_spec.rb",
     "spec/spec_helper.rb"
   ] + locale_files
   s.homepage = %q{http://github.com/mlengse/stopwords-filter}

@@ -1,3 +1,5 @@
+require 'csv'
+
 module Stopwords
   module Snowball
     class Filter < Stopwords::Filter
@@ -14,7 +16,9 @@ module Stopwords
         @locale_filename = "#{File.dirname(__FILE__)}/locales/#{@locale}.csv"
 
         raise ArgumentError.new("Unknown locale: #{locale.inspect}") unless File.exist?(@locale_filename)
-        super File.read(@locale_filename).split(",").reject(&:empty?) + custom_list
+        words = CSV.parse_line(File.read(@locale_filename)) || []
+        words.reject! { |w| w.nil? || w.empty? }
+        super words + custom_list
       end
     end
   end

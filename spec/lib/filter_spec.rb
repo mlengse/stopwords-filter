@@ -14,5 +14,20 @@ describe Stopwords::Filter do
 
   end
 
+  context "#stopword?" do
+    let (:filter) { Stopwords::Filter.new ["by", "from"] }
+
+    it("returns true for stopwords") { expect(filter.stopword?("by")).to be true }
+    it("returns true for stopwords case-insensitively") { expect(filter.stopword?("BY")).to be true }
+    it("returns false for non-stopwords") { expect(filter.stopword?("unknown")).to be false }
+  end
+
+  context "with edge cases" do
+    it("raises ArgumentError for nil input") { expect { Stopwords::Filter.new(nil) }.to raise_error(ArgumentError) }
+    it("raises ArgumentError for non-array input") { expect { Stopwords::Filter.new("by") }.to raise_error(ArgumentError) }
+    it("raises ArgumentError for non-string elements") { expect { Stopwords::Filter.new([123]) }.to raise_error(ArgumentError) }
+    it("handles empty array") { expect(Stopwords::Filter.new([]).filter(["hello"])).to eq(["hello"]) }
+    it("handles single word input") { expect(Stopwords::Filter.new(["by"]).filter(["by"])).to eq([]) }
+  end
 
 end

@@ -5,6 +5,10 @@ module Stopwords
     attr_reader :stopwords
 
     def initialize stopwords
+      raise ArgumentError, "stopwords must be an Array" unless stopwords.is_a?(Array)
+      unless stopwords.all? { |w| w.is_a?(String) }
+        raise ArgumentError, "all stopwords must be Strings"
+      end
       @stopwords = stopwords.map(&:downcase)
     end
 
