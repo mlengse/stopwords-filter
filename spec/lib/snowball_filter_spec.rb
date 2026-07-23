@@ -35,7 +35,7 @@ describe Stopwords::Snowball::Filter do
 
     it("should filter Indonesian stopwords") { expect(filter.filter("buku ini di meja".split)).to eq(["buku", "meja"]) }
 
-    it("should handle common Indonesian particles") { expect(filter.filter("saya pergi ke pasar".split)).to eq(["saya", "pergi", "pasar"]) }
+    it("should handle common Indonesian particles") { expect(filter.filter("saya pergi ke pasar".split)).to eq(["pergi", "pasar"]) }
 
   end
 
@@ -59,6 +59,23 @@ describe Stopwords::Snowball::Filter do
 
   end
 
+  context "with English stopword?" do
 
+    let (:filter) { Stopwords::Snowball::Filter.new "en" }
+
+    it("returns true for stopwords") { expect(filter.stopword?("the")).to be true }
+    it("returns false for non-stopwords") { expect(filter.stopword?("douglas")).to be false }
+
+  end
+
+  context "with Finnish redirect (fn → fi)" do
+
+    let (:filter) { Stopwords::Snowball::Filter.new "fn" }
+
+    it("redirects to fi locale") { expect(filter.locale).to eq("fi") }
+    it("loads Finnish stopwords") { expect(filter.stopwords).to be_a(Array) }
+    it("filters Finnish stopwords") { expect(filter.stopword?("ja")).to be true }
+
+  end
 
 end
