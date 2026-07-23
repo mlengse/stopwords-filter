@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.authors = ["mLengse (medotsys@gmail.com)"]
   s.date = %q{2021-12-19}
   s.description = %q{Small library that allows you to create a simple stopwords filter or use some based on Snowball stopwords lists}
-  s.email = %q{davidjbrenes@gmail.com}
+  s.email = %q{medtosys@gmail.com}
   s.extra_rdoc_files = [
     "CHANGELOG",
     "LICENSE.txt",
@@ -24,7 +24,6 @@ Gem::Specification.new do |s|
   s.files = [
     "CHANGELOG",
     "Gemfile",
-    "Gemfile.lock",
     "README.md",
     "VERSION",
     "lib/stopwords.rb",

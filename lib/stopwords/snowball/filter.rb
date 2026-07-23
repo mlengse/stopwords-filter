@@ -4,12 +4,17 @@ module Stopwords
       attr_reader :locale
       attr_reader :locale_filename
 
+      LOCALE_REDIRECTS = {
+        "fn" => "fi"
+      }.freeze
+
       def initialize locale, custom_list = []
         @locale = locale.gsub(/-\w+/, '') # remove country appendix
+        @locale = LOCALE_REDIRECTS.fetch(@locale, @locale)
         @locale_filename = "#{File.dirname(__FILE__)}/locales/#{@locale}.csv"
 
         raise ArgumentError.new("Unknown locale: #{locale.inspect}") unless File.exist?(@locale_filename)
-        super File.read(@locale_filename).split(",") + custom_list
+        super File.read(@locale_filename).split(",").reject(&:empty?) + custom_list
       end
     end
   end
